@@ -19,7 +19,7 @@ fetch('http://www.floatrates.com/daily/usd.json')
         kgsToUsd.textContent = data.kgs.rate.toFixed(2) + "com";
     });
 
-const kgsToRub = document.querySelector('#kgs-rub');
+const kgsToRub = document.querySelector('#kgs-rub');//курс сом и рубля
 fetch('http://www.floatrates.com/daily/rub.json')
     .then((response) => response.json())
     .then(data => {
@@ -33,7 +33,7 @@ fetch('https://api.open-meteo.com/v1/forecast?latitude=42.4907&longitude=78.3936
         weather.textContent = data.current_weather.temperature + "°C";
     });
 
-const nasaPhoto = document.querySelector('#nasa-photo');
+const nasaPhoto = document.querySelector('#nasa-photo');//добавили фотку с наса
 fetch('https://go-apod.herokuapp.com/apod')
     .then((response) => response.json())
     .then(data => {
@@ -41,8 +41,9 @@ fetch('https://go-apod.herokuapp.com/apod')
 
         const img = document.createElement('img');
         img.src = data.url;
-        img.alt = data.title;
-        img.width = 300;
+        img.alt = data.title;//если не загружается то будет этот текст
+        img.title = data.explanation; // если навести то будет описание на сайте про картинку с наса
+        img.width = 300;//размер
         nasaPhoto.append(img);
     });
 
