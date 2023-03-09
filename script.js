@@ -71,3 +71,16 @@ fetch('https://www.boredapi.com/api/activity')
         activityBored.textContent = data.activity;
     });
 
+
+//при нажатии на кнопку угадать возраст по имени
+document.querySelector("#guess-age").addEventListener("click", function(){
+    //получаем 
+    const name = document.querySelector("#name").value;
+    fetch("https://api.agify.io?name=" + name)
+    .then((response) => response.json())
+    .then((data) => {
+        document.querySelector("#age").textContent = data.age;
+    });
+});
+
+
