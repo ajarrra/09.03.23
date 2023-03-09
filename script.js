@@ -49,5 +49,25 @@ fetch('https://go-apod.herokuapp.com/apod')
 
 
 
+const photoDog = document.querySelector('#random-dog');
+fetch('https://dog.ceo/api/breeds/image/random')
+    .then((response) => response.json())
+    .then(data => {
+        photoDog.textContent = "";
 
+        const img = document.createElement('img');
+        img.src = data.message;
+        img.width = 300;//размер
+        photoDog.append(img);
+    });
+
+
+
+//создали асинхроный запрос кот выдает что можно поделать если тебе скучно
+const activityBored = document.querySelector('#bored');
+fetch('https://www.boredapi.com/api/activity')
+    .then((response) => response.json())
+    .then(data => {
+        activityBored.textContent = data.activity;
+    });
 
