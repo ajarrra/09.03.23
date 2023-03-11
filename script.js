@@ -72,15 +72,23 @@ fetch('https://www.boredapi.com/api/activity')
     });
 
 
+
+
 //при нажатии на кнопку угадать возраст по имени
 document.querySelector("#guess-age").addEventListener("click", function(){
-    //получаем 
+    //получаем имя из поля ввода
     const name = document.querySelector("#name").value;
+    //отправляем запрос на сервер 
     fetch("https://api.agify.io?name=" + name)
     .then((response) => response.json())
     .then((data) => {
+        //вставляем взраст в элемент с id="age"
         document.querySelector("#age").textContent = data.age;
     });
 });
+
+
+
+//при нажатии угадывает страну
 
 
