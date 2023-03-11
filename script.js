@@ -104,11 +104,12 @@ document.querySelector("#guess-country").addEventListener("click", function () {
 let gender = document.querySelector("#gender");
 document.querySelector("#who").addEventListener("click", function () {
     gender.textContent = "Loading...";
-    fetch("https://api.genderize.io/?name=" + nameInpt.value)
+    fetch("https://api.genderize.io/?name=" + ggg.value)
         .then((response) => response.json())
         .then((data) => {
             gender.textContent = + data.gender;
         });
 });
+
 
 
