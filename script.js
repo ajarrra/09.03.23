@@ -75,20 +75,44 @@ fetch('https://www.boredapi.com/api/activity')
 
 
 //при нажатии на кнопку угадать возраст по имени
-document.querySelector("#guess-age").addEventListener("click", function(){
+document.querySelector("#guess-age").addEventListener("click", function () {
     //получаем имя из поля ввода
     const name = document.querySelector("#name").value;
     //отправляем запрос на сервер 
     fetch("https://api.agify.io?name=" + name)
-    .then((response) => response.json())
-    .then((data) => {
-        //вставляем взраст в элемент с id="age"
-        document.querySelector("#age").textContent = data.age;
-    });
+        .then((response) => response.json())
+        .then((data) => {
+            //вставляем взраст в элемент с id="age"
+            document.querySelector("#age").textContent = data.age;
+        });
 });
 
 
 
 //при нажатии угадывает страну
+document.querySelector("#guess-country").addEventListener("click", function () {
+    const name = document.querySelector("#name").value;
+    fetch("https://api.nationalize.io/?name=" + name)
+        .then((response) => response.json())
+        .then((data) => {
+            document.querySelector("#country").textContent = data.country[0].country_id;
+        });
+})
+
+
+
+
+const mem = document.querySelector('#memes');
+fetch('https://api.imgflip.com/get_memes')
+    .then((response) => response.json())
+    .then(data => {
+        mem.textContent = "";
+
+        const img = document.createElement('img');
+        img.src = data.memes;
+        img.width = 300;//размер
+        mem.append(img);
+    });
+
 
 
