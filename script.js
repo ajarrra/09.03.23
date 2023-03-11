@@ -101,18 +101,14 @@ document.querySelector("#guess-country").addEventListener("click", function () {
 
 
 
-
-const mem = document.querySelector('#memes');
-fetch('https://api.imgflip.com/get_memes')
-    .then((response) => response.json())
-    .then(data => {
-        mem.textContent = "";
-
-        const img = document.createElement('img');
-        img.src = data.memes;
-        img.width = 300;//размер
-        mem.append(img);
-    });
-
+let gender = document.querySelector("#gender");
+document.querySelector("#who").addEventListener("click", function () {
+    gender.textContent = "Loading...";
+    fetch("https://api.genderize.io/?name=" + nameInpt.value)
+        .then((response) => response.json())
+        .then((data) => {
+            gender.textContent = + data.gender;
+        });
+});
 
 
