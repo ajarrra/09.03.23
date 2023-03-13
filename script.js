@@ -98,6 +98,8 @@ document.querySelector("#guess-country").addEventListener("click", function () {
             document.querySelector("#country").textContent = data.country[0].country_id;
         });
 })
+ 
+
 
 
 
